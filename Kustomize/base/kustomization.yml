@@ -1,0 +1,8 @@
+commonLabels:
+  version: v3
+
+resources:
+  - mlflow-deployment.yml
+  - mlflow-service.yml
+  - postgres.yml
+  - secrets.yml

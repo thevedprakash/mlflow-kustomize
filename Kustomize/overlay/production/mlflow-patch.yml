@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mlflow-server
+spec:
+  template:
+    spec:
+      containers:
+        - name: mlflow
+          env:
+            - name: BACKEND_STORE_URI
+              value: postgresql://prod-username:prod-password@prod-postgres-service:5432/mlflow
+            - name: DEFAULT_ARTIFACT_ROOT
+              value: file:///mnt/prod-mlflow

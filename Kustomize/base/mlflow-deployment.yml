@@ -30,5 +30,5 @@ spec:
       volumes:
         - name: mlflow-storage
           hostPath:
-            path: /Users/ved/mlflow
+            path: /tmp
             type: Directory

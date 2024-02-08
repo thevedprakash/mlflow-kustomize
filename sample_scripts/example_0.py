@@ -15,11 +15,11 @@ if __name__ == "__main__":
     print("Score: %s" % score)
 
     # mlflow logging
-    # os.environ['MLFLOW_TRACKING_USERNAME'] = 'TopupSkill'
-    # os.environ['MLFLOW_TRACKING_PASSWORD'] = 'TopupSkill1%'
+    os.environ['MLFLOW_TRACKING_USERNAME'] = 'admin'
+    os.environ['MLFLOW_TRACKING_PASSWORD'] = 'EYE@24&07'
     remote_server_uri = 'http://127.0.0.1:5000/'
     mlflow.set_tracking_uri(remote_server_uri)
-    mlflow.set_experiment("exp2")
+    mlflow.set_experiment("exp1")
     start_time = time.time()
     mlflow.log_metric("score", score)
     mlflow.sklearn.log_model(lr, "model")

@@ -14,19 +14,23 @@ spec:
     spec:
       containers:
         - name: mlflow
-          image: custom-mlflow:1.0
+          image: custom-mlflow:5.3
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
           env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
             - name: BACKEND_STORE_URI
-              value: postgresql://<username>:<password>@<postgres-service-name>:5432/mlflow
+              value: "postgresql://mlflow_user:$(POSTGRES_PASSWORD)@postgres:5432/mlflow" # $(POSTGRES_PASSWORD) will be replaced at runtime by the script
             - name: DEFAULT_ARTIFACT_ROOT
-              value: file:///mnt/mlflow
+              value: "file:///tmp/mlflow"
           volumeMounts:
             - name: mlflow-storage
-              mountPath: /mnt/mlflow
-
+              mountPath: /tmp/mlflow
       volumes:
         - name: mlflow-storage
           hostPath:

@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     # mlflow logging
     os.environ['MLFLOW_TRACKING_USERNAME'] = 'admin'
-    os.environ['MLFLOW_TRACKING_PASSWORD'] = 'EYE@24&07'
+    os.environ['MLFLOW_TRACKING_PASSWORD'] = 'password'
     remote_server_uri = 'http://127.0.0.1:5000/'
     mlflow.set_tracking_uri(remote_server_uri)
     mlflow.set_experiment("exp1")
